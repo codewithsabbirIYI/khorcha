@@ -42,8 +42,8 @@
                     </div>
                     <div class="menu">
                         <ul>
-                            <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
-                            <li><a href="all-user.html"><i class="fas fa-user-circle"></i> Users</a></li>
+                            <li><a href="{{url('dashboard')}}"><i class="fas fa-home"></i> Dashboard</a></li>
+                            <li><a href="{{url('dashboard/user')}}"><i class="fas fa-user-circle"></i> Users</a></li>
                             <li><a href="#"><i class="fas fa-images"></i> Banner</a></li>
                             <li><a href="#"><i class="fas fa-comments"></i> Contact Message</a></li>
                             <li><a href="#"><i class="fas fa-globe"></i> Live Site</a></li>
@@ -52,17 +52,7 @@
                     </div>
                 </div>
                 <div class="col-md-10 content">
-                    <div class="row">
-                        <div class="col-md-12 breadcumb_part">
-                            <div class="bread">
-                                <ul>
-                                    <li><a href=""><i class="fas fa-home"></i>Home</a></li>
-                                    <li><a href=""><i class="fas fa-angle-double-right"></i>Dashboard</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                   @yield('page')
+                   @yield('content')
                 </div>
             </div>
         </div>

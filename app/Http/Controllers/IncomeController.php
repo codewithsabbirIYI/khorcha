@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class IncomeController extends Controller
 {
     public function __construct()
     {
@@ -12,17 +12,15 @@ class UserController extends Controller
     }
 
     public function index(){
-        return view('admin.user.all');
+
     }
     public function add(){
-        return view('admin.user.add');
 
     }
     public function edit(){
-        return view('admin.user.edit');
+
     }
     public function view(){
-        return view('admin.user.view');
 
     }
     public function insert(){
@@ -40,4 +38,5 @@ class UserController extends Controller
     public function delete(){
 
     }
+
 }
