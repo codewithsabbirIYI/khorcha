@@ -42,20 +42,25 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Remarks</th>
+                                <th>slug</th>
                                 <th>Manage</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($income_categories as $income_category)
+
                             <tr>
-                                <td>Saidul Islam Uzzal</td>
-                                <td>01710726035</td>
+                                <td>{{$income_category->incate_name}}</td>
+                                <td>{{$income_category->incate_remarks}}</td>
+                                <td>{{$income_category->incate_slug}}</td>
                                 <td>
                                     <div class="btn-group btn_group_manage" role="group">
                                         <button type="button" class="btn btn-sm btn-dark dropdown-toggle"
                                             data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="{{ url('dashboard/user/view') }}">View</a>
-                                            </li>
+
+                                            <li><a class="dropdown-item" href="{{url('dashboard/income/category/view/'.$income_category->incate_slug)}}">View</a></li>
+
                                             <li><a class="dropdown-item" href="{{ url('dashboard/user/edit') }}">Edit</a>
                                             </li>
                                             <li><a class="dropdown-item" href="#">Delete</a></li>
@@ -63,6 +68,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

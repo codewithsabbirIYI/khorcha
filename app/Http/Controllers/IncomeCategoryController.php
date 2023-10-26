@@ -16,7 +16,8 @@ class IncomeCategoryController extends Controller
     }
 
     public function index(){
-        return view('admin.income.category.all');
+        $income_categories = IncomeCategory::all();
+        return view('admin.income.category.all', compact('income_categories'));
     }
     public function add(){
         return view('admin.income.category.add');
@@ -24,8 +25,9 @@ class IncomeCategoryController extends Controller
     public function edit(){
         return view('admin.income.category.edit');
     }
-    public function view(){
-        return view('admin.income.category.view');
+    public function view($incate_slug){
+        $data=IncomeCategory::where('incate_status',1)->where('incate_slug',$incate_slug)->firstOrFail();
+        return view('admin.income.category.view', compact('data'));
     }
     public function insert(Request $request){
 
