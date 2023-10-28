@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeCategoryController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\RecycleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,7 @@ Route::get('dashboard/income/category/view/{slug}', [IncomeCategoryController::c
 Route::post('dashboard/income/category/submit', [IncomeCategoryController::class, 'insert']);
 Route::post('dashboard/income/category/update', [IncomeCategoryController::class, 'update']);
 Route::post('dashboard/income/category/softdelete', [IncomeCategoryController::class, 'softdelete']);
+Route::get('dashboard/income/category/recycle', [RecycleController::class, 'income_category']);
 Route::post('dashboard/income/category/restore', [IncomeCategoryController::class, 'restore']);
 Route::post('dashboard/income/category/delete', [IncomeCategoryController::class, 'delete']);
 

@@ -17,7 +17,7 @@ class IncomeCategoryController extends Controller
 
     public function index()
     {
-        $income_categories = IncomeCategory::Where('incate_status',1)->orderBy('incate_id', 'DESC')->get();
+        $income_categories = IncomeCategory::Where('incate_status', 1)->orderBy('incate_id', 'DESC')->get();
         return view('admin.income.category.all', compact('income_categories'));
     }
     public function add()
@@ -117,9 +117,30 @@ class IncomeCategoryController extends Controller
 
     public function restore()
     {
+        $id = $_POST['modal_id'];
+        $restore = IncomeCategory::where('incate_status', 0)->where('incate_id', $id)->update([
+            'incate_status' => 1,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+
+        if ($restore) {
+
+            return redirect('dashboard/income/category/recycle')->with('success', 'Income Category Restore Successfully');
+        } else {
+            return redirect('dashboard/income/category/recycle')->with('error', 'Opps, Something Is Wrong');
+        }
     }
 
     public function delete()
     {
+        $id = $_POST['modal_id'];
+        $delete = IncomeCategory::where('incate_status', 0)->where('incate_id', $id)->delete([]);
+
+        if ($delete) {
+
+            return redirect('dashboard/income/category/recycle')->with('success', 'Income Category Permanently Deleted Successfully');
+        } else {
+            return redirect('dashboard/income/category/recycle')->with('error', 'Opps, Something Is Wrong');
+        }
     }
 }
