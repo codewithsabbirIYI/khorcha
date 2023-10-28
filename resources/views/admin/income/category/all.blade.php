@@ -61,8 +61,8 @@
 
                                             <li><a class="dropdown-item" href="{{url('dashboard/income/category/view/'.$income_category->incate_slug)}}">View</a></li>
 
-                                            <li><a class="dropdown-item" href="{{ url('dashboard/user/edit') }}">Edit</a>
-                                            </li>
+                                            <li><a class="dropdown-item" href="{{url('dashboard/income/category/edit/'.$income_category->incate_slug)}}">Edit</a></li>
+
                                             <li><a class="dropdown-item" href="#">Delete</a></li>
                                         </ul>
                                     </div>

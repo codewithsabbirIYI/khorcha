@@ -19,12 +19,24 @@
                             <i class="fab fa-gg-circle"></i>Income Category Information
                         </div>
                         <div class="col-md-4 card_button_part">
-                            <a href="{{ url('dashboard/user') }}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All
+                            <a href="{{ url('dashboard/income/category') }}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All
                                 Income Category</a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
+
+                    @if (Session::has('success'))
+                    <div class="alert alert-success alert_success" role="alert">
+                        <strong>Success!</strong> {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    @if (Session::has('error'))
+                        <div class="alert alert-danger alert_error" role="alert">
+                            <strong>Opps!</strong> {{ Session::get('error') }}
+                        </div>
+                    @endif
+
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
@@ -57,11 +69,17 @@
                                     </tr>
                                 @endif
                                 <tr>
-
                                     <td>Created Time</td>
                                     <td>:</td>
                                     <td>{{ $data->created_at->format('d-m Y | h:i:s A') }}</td>
                                 </tr>
+                                @if ($data->updated_at != '')
+                                <tr>
+                                    <td>Update Time</td>
+                                    <td>:</td>
+                                    <td>{{ $data->updated_at->format('d-m Y | h:i:s A') }}</td>
+                                </tr>
+                                @endif
                                 <tr>
 
                             </table>
