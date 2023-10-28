@@ -48,26 +48,31 @@
                         </thead>
                         <tbody>
                             @foreach ($income_categories as $income_category)
+                                <tr>
+                                    <td>{{ $income_category->incate_name }}</td>
+                                    <td>{{ $income_category->incate_remarks }}</td>
+                                    <td>{{ $income_category->incate_slug }}</td>
+                                    <td>
+                                        <div class="btn-group btn_group_manage" role="group">
+                                            <button type="button" class="btn btn-sm btn-dark dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
+                                            <ul class="dropdown-menu">
 
-                            <tr>
-                                <td>{{$income_category->incate_name}}</td>
-                                <td>{{$income_category->incate_remarks}}</td>
-                                <td>{{$income_category->incate_slug}}</td>
-                                <td>
-                                    <div class="btn-group btn_group_manage" role="group">
-                                        <button type="button" class="btn btn-sm btn-dark dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                                        <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item"
+                                                        href="{{ url('dashboard/income/category/view/' . $income_category->incate_slug) }}">View</a>
+                                                </li>
 
-                                            <li><a class="dropdown-item" href="{{url('dashboard/income/category/view/'.$income_category->incate_slug)}}">View</a></li>
+                                                <li><a class="dropdown-item"
+                                                        href="{{ url('dashboard/income/category/edit/' . $income_category->incate_slug) }}">Edit</a>
+                                                </li>
 
-                                            <li><a class="dropdown-item" href="{{url('dashboard/income/category/edit/'.$income_category->incate_slug)}}">Edit</a></li>
-
-                                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
+                                                <li><a class="dropdown-item" href="#" id="softDelete"
+                                                        data-bs-toggle="modal" data-bs-target="#softDeleteModal"
+                                                        data-id="{{$income_category->incate_id}}">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -82,4 +87,26 @@
             </div>
         </div>
     </div>
+
+    <!-- Soft Delete Modal -->
+    <div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <form method="post" action="{{url('dashboard/income/category/softdelete')}}">
+            @csrf
+            <div class="modal-content modal_content">
+              <div class="modal-header modal_header">
+                <h1 class="modal-title modal_title fs-5" id="softDeleteModalLabel"><i class="fab fa-gg-circle"></i> Confirm Message</h1>
+              </div>
+              <div class="modal-body modal_body">
+                Are you want to sure delete data?
+                <input type="hidden" name="modal_id" id="modal_id"/>
+              </div>
+              <div class="modal-footer modal_footer">
+                <button type="submit" class="btn btn-sm btn-danger">Confirm</button>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
 @endsection

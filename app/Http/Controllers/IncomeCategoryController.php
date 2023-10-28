@@ -15,22 +15,27 @@ class IncomeCategoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
-        $income_categories = IncomeCategory::all();
+    public function index()
+    {
+        $income_categories = IncomeCategory::Where('incate_status',1)->orderBy('incate_id', 'DESC')->get();
         return view('admin.income.category.all', compact('income_categories'));
     }
-    public function add(){
+    public function add()
+    {
         return view('admin.income.category.add');
     }
-    public function edit($slug){
-        $data=IncomeCategory::where('incate_status',1)->where('incate_slug',$slug)->firstOrFail();
-        return view('admin.income.category.edit',compact('data'));
+    public function edit($slug)
+    {
+        $data = IncomeCategory::where('incate_status', 1)->where('incate_slug', $slug)->firstOrFail();
+        return view('admin.income.category.edit', compact('data'));
     }
-    public function view($incate_slug){
-        $data=IncomeCategory::where('incate_status',1)->where('incate_slug',$incate_slug)->firstOrFail();
+    public function view($incate_slug)
+    {
+        $data = IncomeCategory::where('incate_status', 1)->where('incate_slug', $incate_slug)->firstOrFail();
         return view('admin.income.category.view', compact('data'));
     }
-    public function insert(Request $request){
+    public function insert(Request $request)
+    {
 
         // form validation here
         $validated = $request->validate([
@@ -53,23 +58,22 @@ class IncomeCategoryController extends Controller
 
         // make notification and redirect here
 
-        if($insert){
+        if ($insert) {
 
             return redirect('dashboard/income/category')->with('success', 'Income Category Added Successfully');
-
-        }else {
+        } else {
             return redirect('dashboard/income/add')->with('error', 'Opps, Something Is Wrong');
         }
-
     }
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
-         //id here
-         $id = $request['id'];
+        //id here
+        $id = $request['id'];
 
         // form validation here
         $validated = $request->validate([
-            'name'=>'required|max:50|unique:income_categories,incate_name,'.$id.',incate_id',
+            'name' => 'required|max:50|unique:income_categories,incate_name,' . $id . ',incate_id',
             'remarks' => 'required|max:150',
         ]);
 
@@ -88,22 +92,34 @@ class IncomeCategoryController extends Controller
 
         // make notification and redirect here
 
-        if($update){
+        if ($update) {
 
-            return redirect('dashboard/income/category/view/'.$slug)->with('success', 'Income Category Updated Successfully');
-
-        }else {
-            return redirect('dashboard/income/category/view/'.$slug)->with('error', 'Opps, Something Is Wrong');
+            return redirect('dashboard/income/category/view/' . $slug)->with('success', 'Income Category Updated Successfully');
+        } else {
+            return redirect('dashboard/income/category/view/' . $slug)->with('error', 'Opps, Something Is Wrong');
         }
-
     }
-    public function softdelete(){
+    public function softdelete()
+    {
+        $id = $_POST['modal_id'];
+        $soft = IncomeCategory::where('incate_status', 1)->where('incate_id', $id)->update([
+            'incate_status' => 0,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
 
+        if ($soft) {
+
+            return redirect('dashboard/income/category')->with('success', 'Income Category Move To Trash Successfully');
+        } else {
+            return redirect('dashboard/income/category')->with('error', 'Opps, Something Is Wrong');
+        }
     }
-    public function restore(){
 
+    public function restore()
+    {
     }
-    public function delete(){
 
+    public function delete()
+    {
     }
 }
