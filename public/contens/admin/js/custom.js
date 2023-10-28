@@ -26,3 +26,43 @@ setTimeout(function() {
 	});
 });
 
+
+//datatable code start
+$(document).ready(function() {
+    $('#myTable').DataTable();
+
+    $('#alltableinfo').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false
+    });
+
+    $('#allTableDesc').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "order": [[ 0, "desc" ]],
+      "info": true,
+      "autoWidth": false
+    });
+  });
+
+  //Datepicker setting code start
+   $(function(){
+       $('#date').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
+       });
+
+       $('#startDate').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
+       });
+  });
+

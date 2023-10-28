@@ -37,7 +37,7 @@
                             <strong>Opps!</strong> {{ Session::get('error') }}
                         </div>
                     @endif
-                    <table class="table table-bordered table-striped table-hover custom_table">
+                    <table id="myTable" class="table table-bordered table-striped table-hover custom_table">
                         <thead class="table-dark">
                             <tr>
                                 <th>Name</th>
