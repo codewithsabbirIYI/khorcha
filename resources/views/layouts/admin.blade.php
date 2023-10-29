@@ -51,7 +51,9 @@
                             <li><a href="{{url('dashboard/user')}}"><i class="fas fa-user-circle"></i> Users</a></li>
                             <li><a href="#"><i class="fas fa-images"></i> Banner</a></li>
                             <li><a href="{{url('dashboard/income/category')}}"><i class="fas fa-user-circle"></i>Income Category</a></li>
-                            <li><a href="{{url('dashboard/income/category/recycle')}}"><i class="fas fa-trash"></i>Income Recycle Bin</a></li>
+                            <li><a href="{{url('dashboard/income/category/recycle')}}"><i class="fas fa-trash"></i>Income Categoty Recycle Bin</a></li>
+                            <li><a href="{{url('dashboard/income')}}"><i class="fas fa-user-circle"></i>Income</a></li>
+                            <li><a href="{{url('dashboard/income/recycle')}}"><i class="fas fa-trash"></i>Income Recycle Bin</a></li>
                             <li><a href="#"><i class="fas fa-comments"></i> Contact Message</a></li>
                             <li><a href="#"><i class="fas fa-globe"></i> Live Site</a></li>
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a></li>

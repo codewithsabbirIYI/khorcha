@@ -22,7 +22,7 @@ class RecycleController extends Controller{
     }
 
     public function income(){
-
+        return view('admin.recycle.income');
     }
 
     public function income_category(){
