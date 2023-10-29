@@ -29,4 +29,8 @@ class RecycleController extends Controller{
       return view('admin.recycle.income-category');
     }
 
+    public function expense_category(){
+      return view('admin.recycle.expense-category');
+    }
+
 }

@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
     @php
-        $all = App\Models\IncomeCategory::where('incate_status', 0)
-            ->orderBy('incate_id', 'DESC')
+        $all = App\Models\ExpenseCategory::where('expcate_status', 0)
+            ->orderBy('expcate_id', 'DESC')
             ->get();
     @endphp
     <div class="row">
@@ -11,10 +11,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-8 card_title_part">
-                            <i class="fab fa-gg-circle"></i> Recycle Income Category Information
+                            <i class="fab fa-gg-circle"></i> Recycle Expense Category Information
                         </div>
                         <div class="col-md-4 card_button_part">
-                            <a href="{{ url('dashboard/income/category/recycle') }}" class="btn btn-sm btn-dark"><i
+                            <a href="{{ url('dashboard/expense/category/recycle') }}" class="btn btn-sm btn-dark"><i
                                     class="fas fa-th"></i>Recycle Bin</a>
                         </div>
                     </div>
@@ -41,14 +41,14 @@
                         <tbody>
                             @foreach ($all as $data)
                                 <tr>
-                                    <td>{{ $data->incate_name }}</td>
-                                    <td>{{ $data->incate_remarks }}</td>
+                                    <td>{{ $data->expcate_name }}</td>
+                                    <td>{{ $data->expcate_remarks }}</td>
                                     <td>
                                         <a href="#" id="restore" data-bs-toggle="modal"
-                                            data-bs-target="#restoreModal" data-id="{{ $data->incate_id }}"><i
+                                            data-bs-target="#restoreModal" data-id="{{ $data->expcate_id }}"><i
                                                 class="fas fa-recycle fs-5 text-success fw-bold mx-1"></i></a>
                                         <a href="#" id="delete" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal" data-id="{{ $data->incate_id }}"><i
+                                            data-bs-target="#deleteModal" data-id="{{ $data->expcate_id }}"><i
                                                 class="fas fa-trash fs-5 text-danger fw-bold"></i></a>
                                     </td>
                                 </tr>
@@ -70,7 +70,7 @@
     <!-- restore modal code-->
     <div class="modal fade" id="restoreModal" tabindex="-1" aria-labelledby="restoreModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form method="post" action="{{ url('dashboard/income/category/restore') }}">
+            <form method="post" action="{{ url('dashboard/expense/category/restore') }}">
                 @csrf
                 <div class="modal-content modal_content">
                     <div class="modal-header modal_header">
@@ -93,7 +93,7 @@
     <!-- delete modal code-->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form method="post" action="{{ url('dashboard/income/category/delete') }}">
+            <form method="post" action="{{ url('dashboard/expense/category/delete') }}">
                 @csrf
                 <div class="modal-content modal_content">
                     <div class="modal-header modal_header">

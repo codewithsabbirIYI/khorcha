@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\IncomeCategoryController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\RecycleController;
@@ -69,16 +70,16 @@ Route::post('dashboard/income/delete', [IncomeController::class, 'delete']);
 
 
 // expense Category related route
-Route::get('dashboard/expense/category', [ExpenseController::class, 'index']);
-Route::get('dashboard/expense/category/add', [ExpenseController::class, 'add']);
-Route::get('dashboard/expense/category/edit', [ExpenseController::class, 'edit']);
-Route::get('dashboard/expense/category/view', [ExpenseController::class, 'view']);
-Route::post('dashboard/expense/category/submit', [ExpenseController::class, 'insert']);
-Route::post('dashboard/expense/category/update', [ExpenseController::class, 'update']);
-Route::post('dashboard/expense/category/softdelete', [ExpenseController::class, 'softdelete']);
+Route::get('dashboard/expense/category', [ExpenseCategoryController::class, 'index']);
+Route::get('dashboard/expense/category/add', [ExpenseCategoryController::class, 'add']);
+Route::get('dashboard/expense/category/edit/{slug}', [ExpenseCategoryController::class, 'edit']);
+Route::get('dashboard/expense/category/view/{slug}', [ExpenseCategoryController::class, 'view']);
+Route::post('dashboard/expense/category/submit', [ExpenseCategoryController::class, 'insert']);
+Route::post('dashboard/expense/category/update', [ExpenseCategoryController::class, 'update']);
+Route::post('dashboard/expense/category/softdelete', [ExpenseCategoryController::class, 'softdelete']);
 Route::get('dashboard/expense/category/recycle', [RecycleController::class, 'expense_category']);
-Route::post('dashboard/expense/category/restore', [ExpenseController::class, 'restore']);
-Route::post('dashboard/expense/category/delete', [ExpenseController::class, 'delete']);
+Route::post('dashboard/expense/category/restore', [ExpenseCategoryController::class, 'restore']);
+Route::post('dashboard/expense/category/delete', [ExpenseCategoryController::class, 'delete']);
 
 // expense related route
 Route::get('dashboard/expense', [ExpenseController::class, 'index']);

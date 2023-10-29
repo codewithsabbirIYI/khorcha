@@ -39,7 +39,7 @@
     <section>
         <div class="container-fluid content_part">
             <div class="row">
-                <div class="col-md-2 sidebar_part">
+                <div class="col-md-2 sidebar_part h-auto">
                     <div class="user_part">
                         <img class="" src="images/avatar.png" alt="avatar"/>
                         <h5>Saidul Islam Uzzal</h5>
@@ -50,12 +50,19 @@
                             <li><a href="{{url('dashboard')}}"><i class="fas fa-home"></i> Dashboard</a></li>
                             <li><a href="{{url('dashboard/user')}}"><i class="fas fa-user-circle"></i> Users</a></li>
                             <li><a href="#"><i class="fas fa-images"></i> Banner</a></li>
+
                             <li><a href="{{url('dashboard/income/category')}}"><i class="fas fa-user-circle"></i>Income Category</a></li>
                             <li><a href="{{url('dashboard/income/category/recycle')}}"><i class="fas fa-trash"></i>Income Categoty Recycle Bin</a></li>
                             <li><a href="{{url('dashboard/income')}}"><i class="fas fa-user-circle"></i>Income</a></li>
                             <li><a href="{{url('dashboard/income/recycle')}}"><i class="fas fa-trash"></i>Income Recycle Bin</a></li>
+
+                            <li><a href="{{url('dashboard/expense/category')}}"><i class="fas fa-user-circle"></i>Expense Category</a></li>
+                            <li><a href="{{url('dashboard/expense/category/recycle')}}"><i class="fas fa-trash"></i>Expense Categoty Recycle Bin</a></li>
+                            <li><a href="{{url('dashboard/expense')}}"><i class="fas fa-user-circle"></i>Expense</a></li>
+                            <li><a href="{{url('dashboard/expense/recycle')}}"><i class="fas fa-trash"></i>Expense Recycle Bin</a></li>
+
                             <li><a href="#"><i class="fas fa-comments"></i> Contact Message</a></li>
-                            <li><a href="#"><i class="fas fa-globe"></i> Live Site</a></li>
+
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                         <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
