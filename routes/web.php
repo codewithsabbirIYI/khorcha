@@ -84,11 +84,12 @@ Route::post('dashboard/expense/category/delete', [ExpenseCategoryController::cla
 // expense related route
 Route::get('dashboard/expense', [ExpenseController::class, 'index']);
 Route::get('dashboard/expense/add', [ExpenseController::class, 'add']);
-Route::get('dashboard/expense/edit', [ExpenseController::class, 'edit']);
-Route::get('dashboard/expense/view', [ExpenseController::class, 'view']);
+Route::get('dashboard/expense/edit/{slug}', [ExpenseController::class, 'edit']);
+Route::get('dashboard/expense/view/{slug}', [ExpenseController::class, 'view']);
 Route::post('dashboard/expense/submit', [ExpenseController::class, 'insert']);
 Route::post('dashboard/expense/update', [ExpenseController::class, 'update']);
 Route::post('dashboard/expense/softdelete', [ExpenseController::class, 'softdelete']);
+Route::get('dashboard/expense/recycle', [RecycleController::class, 'expense']);
 Route::post('dashboard/expense/restore', [ExpenseController::class, 'restore']);
 Route::post('dashboard/expense/delete', [ExpenseController::class, 'delete']);
 

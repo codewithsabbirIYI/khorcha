@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Income;
 use Carbon\Carbon;
 use Session;
-use Auth;
+
 
 class IncomeController extends Controller
 {
