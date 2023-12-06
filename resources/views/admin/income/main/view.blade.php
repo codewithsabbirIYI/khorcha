@@ -9,7 +9,7 @@
                       <i class="fab fa-gg-circle"></i>View Income Information
                   </div>
                   <div class="col-md-4 card_button_part">
-                      <a href="{{url('dashboard/income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Category</a>
+                      <a href="{{url('dashboard/income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Income</a>
                   </div>
               </div>
             </div>

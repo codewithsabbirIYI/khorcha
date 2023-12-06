@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('income_categories', function (Blueprint $table) {
             $table->bigIncrements('incate_id');
-            $table->string('incate_name', 50)->unique();
-            $table->string('incate_remarks', 200)->nullable();
+            $table->string('incate_name',50)->unique();
+            $table->string('incate_remarks',200)->nullable();
             $table->integer('incate_creator')->nullable();
             $table->integer('incate_editor')->nullable();
             $table->string('incate_slug',30)->nullable();

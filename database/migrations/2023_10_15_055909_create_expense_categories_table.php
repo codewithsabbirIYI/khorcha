@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('expense_categories', function (Blueprint $table) {
             $table->bigIncrements('expcate_id');
-            $table->string('expcate_name', 50)->unique();
-            $table->string('expcate_remarks', 200)->nullable();
+            $table->string('expcate_name',50)->unique();
+            $table->string('expcate_remarks',200)->nullable();
             $table->integer('expcate_creator')->nullable();
             $table->integer('expcate_editor')->nullable();
             $table->string('expcate_slug',30)->nullable();

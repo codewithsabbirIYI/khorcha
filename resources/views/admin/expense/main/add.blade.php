@@ -33,7 +33,7 @@
                       <div class="col-md-2"></div>
                     </div>
                     <div class="row mb-3 {{ $errors->has('title') ? ' has-error' : '' }}">
-                      <label class="col-sm-3 col-form-label col_form_label">expense Title<span class="req_star">*</span>:</label>
+                      <label class="col-sm-3 col-form-label col_form_label">Expense Title<span class="req_star">*</span>:</label>
                       <div class="col-sm-7">
                         <input type="text" class="form-control form_control" id="" name="title" value="{{old('title')}}">
                         @if($errors->has('title'))
@@ -44,10 +44,10 @@
                       </div>
                     </div>
                     <div class="row mb-3 {{ $errors->has('category') ? ' has-error' : '' }}">
-                      <label class="col-sm-3 col-form-label col_form_label">expense Category<span class="req_star">*</span>:</label>
+                      <label class="col-sm-3 col-form-label col_form_label">Expense Category<span class="req_star">*</span>:</label>
                       <div class="col-sm-7">
                         @php
-                          $allCate=App\Models\expenseCategory::where('expcate_status',1)->orderBy('expcate_name','ASC')->get();
+                          $allCate=App\Models\ExpenseCategory::where('expcate_status',1)->orderBy('expcate_name','ASC')->get();
                         @endphp
                         <select class="form-control form_control" id="" name="category">
                           <option value="">Choose Category</option>
@@ -63,7 +63,7 @@
                       </div>
                     </div>
                     <div class="row mb-3 {{ $errors->has('amount') ? ' has-error' : '' }}">
-                      <label class="col-sm-3 col-form-label col_form_label">expense Amount<span class="req_star">*</span>:</label>
+                      <label class="col-sm-3 col-form-label col_form_label">Expense Amount<span class="req_star">*</span>:</label>
                       <div class="col-sm-7">
                         <input type="number" class="form-control form_control" id="" name="amount" value="{{old('amount')}}">
                         @if($errors->has('amount'))
@@ -74,7 +74,7 @@
                       </div>
                     </div>
                     <div class="row mb-3 {{ $errors->has('date') ? ' has-error' : '' }}">
-                      <label class="col-sm-3 col-form-label col_form_label">expense Date<span class="req_star">*</span>:</label>
+                      <label class="col-sm-3 col-form-label col_form_label">Expense Date<span class="req_star">*</span>:</label>
                       <div class="col-sm-7">
                         <input type="text" class="form-control form_control" id="date" name="date" value="{{old('date')}}">
                         @if($errors->has('date'))

@@ -4,26 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <link rel="stylesheet" href="{{asset('contens/admin')}}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{asset('contens/admin')}}/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('contens/admin')}}/css/datatables.min.css">
-    <link rel="stylesheet" href="{{asset('contens/admin')}}/css/datepicker.css">
-    <link rel="stylesheet" href="{{asset('contens/admin')}}/css/style.css">
-
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datatables.min.css">
+    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datepicker.css">
+    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header>
-        <div class="container-fluid header_part">
+        <div class="container-fluid header_part no_print">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-7"></div>
                 <div class="col-md-3 top_right_menu text-end">
                     <div class="dropdown">
                       <button class="btn dropdown-toggle top_right_btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          <img src="images/avatar.png" class="img-fluid">
-                          Saidul Islam Uzzal
+                          <img src="{{asset('contents/admin')}}/images/avatar.png" class="img-fluid">
+                          {{Auth::user()->name}}
                       </button>
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#"><i class="fas fa-user-tie"></i> My Profile</a></li>
@@ -39,40 +38,63 @@
     <section>
         <div class="container-fluid content_part">
             <div class="row">
-                <div class="col-md-2 sidebar_part h-auto">
+                <div class="col-md-2 sidebar_part no_print">
                     <div class="user_part">
-                        <img class="" src="images/avatar.png" alt="avatar"/>
-                        <h5>Saidul Islam Uzzal</h5>
+                        <img class="" src="{{asset('contents/admin')}}/images/avatar.png" alt="avatar"/>
+                        <h5>{{Auth::user()->name}}</h5>
                         <p><i class="fas fa-circle"></i> Online</p>
                     </div>
                     <div class="menu">
                         <ul>
                             <li><a href="{{url('dashboard')}}"><i class="fas fa-home"></i> Dashboard</a></li>
+                            @if(Auth::user()->role=='1')
                             <li><a href="{{url('dashboard/user')}}"><i class="fas fa-user-circle"></i> Users</a></li>
-                            <li><a href="#"><i class="fas fa-images"></i> Banner</a></li>
-
-                            <li><a href="{{url('dashboard/income/category')}}"><i class="fas fa-user-circle"></i>Income Category</a></li>
-                            <li><a href="{{url('dashboard/income/category/recycle')}}"><i class="fas fa-trash"></i>Income Categoty Recycle Bin</a></li>
-                            <li><a href="{{url('dashboard/income')}}"><i class="fas fa-user-circle"></i>Income</a></li>
-                            <li><a href="{{url('dashboard/income/recycle')}}"><i class="fas fa-trash"></i>Income Recycle Bin</a></li>
-
-                            <li><a href="{{url('dashboard/expense/category')}}"><i class="fas fa-user-circle"></i>Expense Category</a></li>
-                            <li><a href="{{url('dashboard/expense/category/recycle')}}"><i class="fas fa-trash"></i>Expense Categoty Recycle Bin</a></li>
-                            <li><a href="{{url('dashboard/expense')}}"><i class="fas fa-user-circle"></i>Expense</a></li>
-                            <li><a href="{{url('dashboard/expense/recycle')}}"><i class="fas fa-trash"></i>Expense Recycle Bin</a></li>
-
-                            <li><a href="#"><i class="fas fa-comments"></i> Contact Message</a></li>
-
+                            @endif
+                            <li><a href="{{url('dashboard/user')}}"><i class="fas fa-cogs"></i> Manage</a>
+                              <ul>
+                                <li><a href="{{url('dashboard/manage/basic')}}">Basic Information</a><li>
+                                <li><a href="{{url('dashboard/manage/social')}}">Social Media</a><li>
+                                <li><a href="{{url('dashboard/manage/contact')}}">Contact Information</a><li>
+                              </ul>
+                            </li>
+                            @if(Auth::user()->role<='2')
+                            <li><a href="{{url('dashboard/income')}}"><i class="fas fa-wallet"></i> Income</a>
+                              <ul>
+                                <li><a href="{{url('dashboard/income')}}">All Income</a><li>
+                                <li><a href="{{url('dashboard/income/add')}}">Add Income</a><li>
+                                <li><a href="{{url('dashboard/income/category')}}">Income Category</a><li>
+                              </ul>
+                            </li>
+                            @endif
+                            <li><a href="{{url('dashboard/expense')}}"><i class="fas fa-coins"></i> Expense</a>
+                              <ul>
+                                <li><a href="{{url('dashboard/expense')}}">All Expense</a><li>
+                                <li><a href="{{url('dashboard/expense/add')}}">Add Expense</a><li>
+                                <li><a href="{{url('dashboard/expense/category')}}">Expense Category</a><li>
+                              </ul>
+                            </li>
+                            <li><a href="{{url('dashboard/archive')}}"><i class="fas fa-box"></i> Archive</a></li>
+                            <li><a href="#"><i class="fas fa-file-alt"></i> Reports</a></li>
+                            <li><a href="#"><i class="fas fa-trash"></i> Recycle Bin</a></li>
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                         <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
+                          @csrf
                         </form>
-
                     </div>
                 </div>
                 <div class="col-md-10 content">
-                   @yield('content')
+                    <div class="row">
+                        <div class="col-md-12 breadcumb_part no_print">
+                            <div class="bread">
+                                <ul>
+                                    <li><a href=""><i class="fas fa-home"></i>Home</a></li>
+                                    <li><a href=""><i class="fas fa-angle-double-right"></i>Dashboard</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    @yield('content')
                 </div>
             </div>
         </div>
@@ -88,10 +110,10 @@
             </div>
         </div>
     </footer>
-    <script src="{{asset('contens/admin')}}/js/jquery-3.6.0.min.js"></script>
-    <script src="{{asset('contens/admin')}}/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('contens/admin')}}/js/datatables.min.js"></script>
-    <script src="{{asset('contens/admin')}}/js/bootstrap-datepicker.js"></script>
-    <script src="{{asset('contens/admin')}}/js/custom.js"></script>
+    <script src="{{asset('contents/admin')}}/js/jquery-3.6.0.min.js"></script>
+    <script src="{{asset('contents/admin')}}/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('contents/admin')}}/js/datatables.min.js"></script>
+    <script src="{{asset('contents/admin')}}/js/bootstrap-datepicker.js"></script>
+    <script src="{{asset('contents/admin')}}/js/custom.js"></script>
   </body>
 </html>

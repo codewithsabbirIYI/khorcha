@@ -31,7 +31,7 @@ a{
 }
 
 body{
-    font-family: 'Ubuntu', sans-serif; 
+    font-family: 'Ubuntu', sans-serif;
     overflow-x: hidden;
 }
 
@@ -39,11 +39,12 @@ body{
 .header_part{
     background-color: #4D6299;
     padding: 4px 0px 4px;
-    
+
 }
 
 .top_right_btn{
     border: none!important;
+    color: #f7f7f7;
 }
 
 .top_right_btn img{
@@ -53,29 +54,29 @@ body{
 }
 
 .top_right_menu ul li a{
-    font-size: 14px;   
+    font-size: 14px;
 }
 
 .top_right_menu ul li a i{
-    margin-right: 5px;   
+    margin-right: 5px;
 }
 
 /*content part code start*/
 .content_part{
-    
+
 }
 
 .sidebar_part{
     background-color: #252c34;
-    height: 88vh;
+    min-height: 100vh!important;
     padding-left: 0px;
     padding-right: 0px;
 }
 
 .user_part{
-    padding: 20px 0px 15px; 
+    padding: 20px 0px 15px;
     text-align: center;
-    border-bottom: 1px solid #17181F;
+    /* border-bottom: 1px solid #17181F; */
 }
 
 .user_part img{
@@ -86,7 +87,7 @@ body{
 }
 
 .user_part h5{
-    color: #ccc;   
+    color: #ccc;
     font-size: 15px;
     line-height: 24px;
     margin-top: 5px;
@@ -94,7 +95,7 @@ body{
 }
 
 .user_part p{
-    font-size: 12px;
+  font-size: 12px;
 	color: #ccc;
 	line-height: 15px;
 }
@@ -104,7 +105,7 @@ body{
 }
 
 .menu{
-    
+
 }
 
 .menu ul{
@@ -112,19 +113,19 @@ body{
 }
 
 .menu ul li{
-    
+
 }
 
 .menu ul li a{
-   color: #ccc;
+  color: #ccc;
 	font-size: 14px;
 	font-weight: 500;
 	text-decoration: none;
 	line-height: 40px;
 	display: block;
-	border-bottom: 1px solid #17181F;
+	border-top: 1px solid #17181F;
 	padding-left: 10px;
-	transition: all linear 0.5s; 
+	transition: all linear 0.5s;
 }
 
 .menu ul li:hover a{
@@ -132,11 +133,47 @@ body{
 }
 
 .menu ul li a i{
-    margin-right: 5px;   
+    margin-right: 5px;
+}
+
+.menu ul li ul{
+  position: relative;
+  display: none;
+  background-color:#252c34!important;
+}
+
+.menu ul li ul li a{
+  background-color:#252c34;
+}
+
+.menu ul li:hover ul{
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.menu ul li:hover ul li a{
+  background-color:#252c34!important;
+}
+
+.menu ul li ul li a{
+  color: #ccc;
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	line-height: 35px;
+  border-top: none;
+	display: block;
+	padding-left: 30px;
+	transition: all linear 0.3s;
+}
+
+.menu ul li ul li:hover a{
+  color: #0d6efd;
 }
 
 .content{
-    
+
 }
 
 .breadcumb_part{
@@ -183,7 +220,7 @@ body{
 }
 
 .copyright{
-    
+
 }
 
 .copyright p{
@@ -220,7 +257,7 @@ body{
 }
 
 .card_title_part i{
-    margin-right: 5px;   
+    margin-right: 5px;
 }
 
 .card_button_part{
@@ -249,7 +286,7 @@ span.req_star{
 }
 
 .form_control{
-    
+
 }
 
 .btn_group_manage button{
@@ -284,4 +321,51 @@ span.req_star{
 .img200{
     max-width: 300px;
     max-height: 200px;
+}
+
+.has-error .invalid-feedback{
+  display: block;
+}
+
+.modal_content{
+
+}
+
+.modal_header{
+
+}
+
+.modal_title{
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.modal_body{
+
+}
+
+.modal_footer{
+
+}
+
+.search_btn{
+
+}
+
+.mar_left_0{
+  margin-left: 0px!important;
+}
+
+.pad_left_0{
+  padding-left: 0px!important;
+}
+
+@media print {
+  .no_print{
+    display: none!important;
+  }
+
+  .dataTables_length, .dataTables_filter, .dataTables_paginate, .dataTables_info {
+    display: none!important;
+  }
 }
